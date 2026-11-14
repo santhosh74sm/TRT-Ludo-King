@@ -5,7 +5,21 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/intro1"
+    android:background="@drawable/intro2"
     tools:context=".SplashActivity">
+
+    <ImageView
+        android:id="@+id/created_by_santhosh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="Created By Santhosh"
+        android:src="@drawable/santhosh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.80"
+        app:layout_constraintWidth_percent="0.65" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
