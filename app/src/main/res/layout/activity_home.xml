@@ -37,41 +37,29 @@
         app:srcCompat="@drawable/spinadbg2" />
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/playwithfriends"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:id="@+id/created_by_santhosh_dashboard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="Created By Santhosh"
+        android:src="@drawable/santhosh"
+        app:layout_constraintDimensionRatio="2172:724"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/computer" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+        app:layout_constraintWidth_percent="0.60"
+        android:layout_marginTop="10dp" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintDimensionRatio="380:328"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/created_by_santhosh_dashboard"
+        app:layout_constraintWidth_percent="0.52"
         app:srcCompat="@drawable/passnplay" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/playonline2"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topNavBar"
@@ -275,8 +263,8 @@
         android:id="@+id/imageView15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -287,19 +275,21 @@
         android:id="@+id/imageView16"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
-        android:layout_marginTop="-10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView17"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/tmnt" />
 
     <ImageView
         android:id="@+id/imageView17"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginEnd="-35dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView16"
         app:layout_constraintTop_toTopOf="@+id/imageView16"
         app:srcCompat="@drawable/snakesbtn" />
 

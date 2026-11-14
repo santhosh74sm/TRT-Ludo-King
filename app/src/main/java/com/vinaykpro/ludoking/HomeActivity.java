@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     boolean tokenNormal = true;
     // home layout views
     ConstraintLayout exitAppLayout;
-    ImageView profiletop,playonline,playwithfriends,computer,passnplay,shopbutton,exitgamebtn,settingsbtn,invitefriendsbtn,tmntbtn;
+    ImageView profiletop,passnplay,shopbutton,exitgamebtn,settingsbtn,invitefriendsbtn,tmntbtn;
     TextView usernamehomescreen,diamondscount1,diamondscount2,coinscount1,coinscount2;
     // settings layout views
     ImageView stgsbackbtn,stgssharebtn,stgslikebtn,stgsgeturpverifiedbtn,stgssoundonoffbtn,stgsmusiconoffbtn,stgsplaybtn,stgslanguagebtn,stgsselectbtn,stgsviewbtn1,stgsfaqbtn,stgscomposebtn,stgsrulesbtn,stgsviewbtn2,stgsmoregamesbtn,stgslboardbtn,stgsviewbtn3,stgseditbtn,stgsinfobtn,stgsdelaccountbtn,stgsfbbtn,stgsinstabtn,stgstwitterbtn,stgsytbtn,stgsmoregameslongbtn;
@@ -141,26 +141,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         params.topToTop = R.id.topNavBar;
         params.endToEnd = R.id.topNavBar;
         coinAndDiamondBG.setLayoutParams(params);
-        params = new ConstraintLayout.LayoutParams((int)(pxWidth*0.32), (int)((pxWidth*0.32)+((pxWidth*0.32)*0.14)));
-        params.topMargin = (int)(pxWidth*0.05);
-        params.leftMargin = (int)(pxWidth*0.15);
-        params.topToBottom = R.id.imageView15;
-        params.startToStart = R.id.root;
-        playonline.setLayoutParams(params);
-        params = new ConstraintLayout.LayoutParams((int)(pxWidth*0.32), (int)((pxWidth*0.32)+((pxWidth*0.32)*0.14)));
-        params.topMargin = (int)(pxWidth*0.05);
-        params.rightMargin = (int)(pxWidth*0.15);
-        params.topToBottom = R.id.imageView15;
-        params.endToEnd = R.id.root;
-        playwithfriends.setLayoutParams(params);
-        params = new ConstraintLayout.LayoutParams((int)(pxWidth*0.32), (int)((pxWidth*0.32)+((pxWidth*0.32)*0.14)));
-        params.leftToLeft = playonline.getId();
-        params.topToBottom = playonline.getId();
-        computer.setLayoutParams(params);
-        params = new ConstraintLayout.LayoutParams((int)(pxWidth*0.32), (int)((pxWidth*0.32)+((pxWidth*0.32)*0.14)));
-        params.rightToRight = playwithfriends.getId();
-        params.topToBottom = playwithfriends.getId();
-        passnplay.setLayoutParams(params);
+
 
         if(isMusicOn) {
             m = MediaPlayer.create(this, R.raw.music);
@@ -352,26 +333,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        playonline.setOnTouchListener(clickBounceEffect);
-        playonline.setOnClickListener(noInternetOnClick);
-        playwithfriends.setOnTouchListener(clickBounceEffect);
-        playwithfriends.setOnClickListener(noInternetOnClick);
-        computer.setOnTouchListener(clickBounceEffect);
-        computer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                giveClickSound();
-                computerlayout.setScaleX(0.0f);computerlayout.setScaleY(0.0f);
-                computerlayout.setVisibility(View.VISIBLE);
-                computerlayout.animate().scaleX(1.0f).scaleY(1.0f).setInterpolator(new OvershootInterpolator()).setDuration(200).setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        computerlayout.animate().setListener(null);
-                    }
-                }).start();
-            }
-        });
         passnplay.setOnTouchListener(clickBounceEffect);
         passnplay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1735,7 +1696,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 computerclassiclayout.setVisibility(View.GONE);
-                computer.callOnClick();
+                computerlayout.setVisibility(View.VISIBLE);
             }
         });
 
@@ -1976,9 +1937,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         profiletop = findViewById(R.id.imageView19); // 18 -> bg
         usernamehomescreen = findViewById(R.id.textView4);
-        playonline = findViewById(R.id.imageView8);
-        playwithfriends = findViewById(R.id.imageView9);
-        computer = findViewById(R.id.imageView4);
         passnplay = findViewById(R.id.imageView5);
         shopbutton = findViewById(R.id.imageView11);
         exitgamebtn = findViewById(R.id.imageView12);
