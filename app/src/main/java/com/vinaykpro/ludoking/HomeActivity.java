@@ -68,9 +68,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     // statistics layout views
     ImageView stcsusernamebtn,stcsprofpic,stcsbackbtn,stcseditprofile,stcslgwfb,stcslgwggl,stcslgwpg,stcsfshare;
     TextView stcsusernametextview;
-    //first login screen views
-    ConstraintLayout firstLoginLayout;
-    ImageView lgnwfbbtn,snwgglbtn,snwpgbtn,playasguestbtn;
     //guest profile/second login screen views
     ImageView pselecturctrybtn,pprofilepicview,plgnwfbbtn,psnwgglbtn,psnwpgbtn,pcontinuebtn;
     TextView playerNameBtnComTextView;
@@ -201,20 +198,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         rotateAnimator.start();
 
 
-        // player login logic
-        //sharedPreferences = getSharedPreferences("LudoModUser",MODE_PRIVATE);
-
+        // player login logic - auto log in as guest on first launch without showing login/profile screen
         boolean isPlayerLoggedIn = sharedPreferences.getBoolean("logged",false);
 
         if(!isPlayerLoggedIn) {
             int tempnum = (int) Math.floor(Math.random()*7777)+2145;
-            firstLoginLayout.setVisibility(View.VISIBLE);
             String generatedguestname = "Guest"+tempnum;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("logged", true);
+            editor.putString("username", generatedguestname);
+            editor.putInt("dp", 0);
+            editor.apply();
+
+            setProfilePic(0);
             stcsusernametextview.setText(generatedguestname);
             playerNameBtnComTextView.setText(generatedguestname);
             usernamehomescreen.setText(generatedguestname);
-            this.onClick(imageView);
+            diamondscount1.setText(("100"));
             coinscount1.setText(("1,000"));
+            diamondscount2.setText(("100"));
             coinscount2.setText(("1,000"));
         } else {
             int dpindex = sharedPreferences.getInt("dp",0);
@@ -558,18 +560,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         stgssharebtn.setOnClickListener(noInternetOnClick);stgslikebtn.setOnClickListener(noInternetOnClick);stgsgeturpverifiedbtn.setOnClickListener(noInternetOnClick);stgsplaybtn.setOnClickListener(noInternetOnClick);stgslanguagebtn.setOnClickListener(noInternetOnClick);stgsselectbtn.setOnClickListener(noInternetOnClick);stgsviewbtn1.setOnClickListener(noInternetOnClick);stgsfaqbtn.setOnClickListener(noInternetOnClick);stgscomposebtn.setOnClickListener(noInternetOnClick);stgsrulesbtn.setOnClickListener(noInternetOnClick);stgsviewbtn2.setOnClickListener(noInternetOnClick);stgsmoregamesbtn.setOnClickListener(noInternetOnClick);stgslboardbtn.setOnClickListener(noInternetOnClick);stgsviewbtn3.setOnClickListener(noInternetOnClick);stgseditbtn.setOnClickListener(noInternetOnClick);stgsinfobtn.setOnClickListener(noInternetOnClick);stgsdelaccountbtn.setOnClickListener(noInternetOnClick);stgsfbbtn.setOnClickListener(noInternetOnClick);stgsinstabtn.setOnClickListener(noInternetOnClick);stgstwitterbtn.setOnClickListener(noInternetOnClick);stgsytbtn.setOnClickListener(noInternetOnClick);stgsmoregameslongbtn.setOnClickListener(noInternetOnClick);
 
 
-        // setting listeners to first login layout views
-        lgnwfbbtn.setOnTouchListener(clickEffect);snwgglbtn.setOnTouchListener(clickEffect);snwpgbtn.setOnTouchListener(clickEffect);playasguestbtn.setOnTouchListener(clickEffect);
-        lgnwfbbtn.performClick();
-        lgnwfbbtn.setOnClickListener(noInternetOnClick);snwgglbtn.setOnClickListener(noInternetOnClick);snwpgbtn.setOnClickListener(noInternetOnClick);
-        playasguestbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                giveClickSound();
-                findViewById(R.id.loginscreen).setVisibility(View.GONE);
-                findViewById(R.id.guestprofilelayout).setVisibility(View.VISIBLE);
-            }
-        });
 
         // setting listeners for second login layout/guest profile layout
 
@@ -595,26 +585,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        findViewById(R.id.imageView23).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showNoInternet();
-            }
-        });
-
-        findViewById(R.id.imageView26).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showNoInternet();
-            }
-        });
-
-        findViewById(R.id.imageView27).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showNoInternet();
-            }
-        });
 
 
         // setting listeners for passnplay layout 1 views
@@ -2056,12 +2026,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         stcslgwpg = findViewById(R.id.imageView452);
         stcsfshare = findViewById(R.id.imageView85);
 
-        // first login screen views
-        firstLoginLayout = findViewById(R.id.loginscreen);
-        lgnwfbbtn = findViewById(R.id.imageView23);
-        snwgglbtn = findViewById(R.id.imageView26);
-        snwpgbtn = findViewById(R.id.imageView27);
-        playasguestbtn = findViewById(R.id.imageView24);
 
         // second login/guest profile layout views
         guestprofilecreateoreditlayout = findViewById(R.id.guestprofilelayout);
